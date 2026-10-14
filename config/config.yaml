@@ -1,0 +1,50 @@
+# NEXUS Configuration
+
+# Company Scenario
+company:
+  name: "TechCorp"
+  employees: 40
+  network:
+    cidr: "192.168.1.0/24"
+    servers:
+      web: "192.168.1.10"
+      db: "192.168.1.20"
+      file: "192.168.1.30"
+
+# Data Configuration
+data:
+  dataset: "CICIDS2017"
+  raw_path: "data/raw/"
+  processed_path: "data/processed/"
+  scenarios:
+    - "brute_force"
+    - "insider_threat"
+    - "malware"
+    - "port_scanning"
+
+# Model Configuration
+models:
+  network_ids:
+    algorithm: "random_forest"
+    n_estimators: 100
+    max_depth: 20
+  
+  log_anomaly:
+    algorithm: "autoencoder"
+    encoding_dim: 32
+    epochs: 50
+    batch_size: 32
+
+# Risk Scoring
+risk_scoring:
+  network_weight: 0.25
+  log_weight: 0.25
+  threat_intel_weight: 0.50
+  threshold: 0.7
+
+# Paths
+paths:
+  models: "src/models/"
+  features: "src/features/"
+  logs: "logs/"
+  reports: "docs/reports/"
